@@ -3,16 +3,16 @@ package hello.service;
 import hello.dataBase.DollarRate;
 import hello.dataBase.DollarRateCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import java.util.*;
 
-@SpringBootApplication
+@Component
 public class RBKService {
 
     @Bean
@@ -42,9 +42,13 @@ public class RBKService {
         if (maxDollarRate.isPresent()) {
             return maxDollarRate.get();
         }
-        Double dollarRate = getMax(parseData(getDataFromServer()));
+        Double dollarRate = getMax(parseDollarRateData(getDollarRateData()));
         setDollarRateToDB(dollarRate);
         return dollarRate;
+    }
+
+    public  ArrayList<Double> getRates() {
+        return parseDollarRateData(getDollarRateData());
     }
 
     public Double getMax(ArrayList<Double> arr) {
@@ -55,7 +59,7 @@ public class RBKService {
         return max;
     }
 
-    public ArrayList<String> getDataFromServer(){
+    public ArrayList<String> getDollarRateData(){
         String url = "http://export.rbc.ru/free/selt.0/free.fcgi?period=DAILY&tickers="+
                 "USD000000TOD&separator=TAB&data_format=BROWSER&lastdays=30";
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
@@ -63,12 +67,12 @@ public class RBKService {
     }
 
 
-    public ArrayList<Double> parseData(ArrayList<String> sArr){
+    public ArrayList<Double> parseDollarRateData(ArrayList<String> sArr){
         ArrayList<Double> res = new ArrayList<>();
-        int column1 = 2, column2 = 6;
+        int numOfColumn = 8;
         for (int i = 0; i < sArr.size(); i++){
-            for (int j = column1; j < column2; j++){
-                res.add(Double.parseDouble(sArr.get(j)));
+            if( i % numOfColumn == numOfColumn - 1){
+                res.add(Double.parseDouble(sArr.get(i)));
             }
         }
         return res;

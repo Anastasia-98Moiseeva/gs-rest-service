@@ -32,7 +32,7 @@ public class ApplicationTest {
     @Test
     public void testGetMax() {
         RBKService service = new RBKService();
-        when(serviceMock.parseData((ArrayList<String>) Mockito.<String>anyCollection())).thenReturn(data);
-        assertEquals(64.4575, service.getMax(serviceMock.parseData(strData)), 0.1);
+        when(serviceMock.parseDollarRateData((ArrayList<String>) Mockito.<String>anyCollection())).thenReturn(data);
+        assertEquals(64.4575, service.getMax(serviceMock.parseDollarRateData(strData)), 0.1);
     }
 }
