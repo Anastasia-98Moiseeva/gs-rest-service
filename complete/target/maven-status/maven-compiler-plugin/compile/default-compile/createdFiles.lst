@@ -1,0 +1,11 @@
+hello/dataBase/DollarRateCrudRepository.class
+hello/dataBase/DollarRate.class
+hello/weather/WeatherInstance.class
+hello/service/DarkSpyService.class
+hello/weather/WeatherData.class
+hello/service/RBKService.class
+hello/controller/Controller.class
+hello/weather/WeatherResponse.class
+hello/Application.class
+hello/weather/WeatherTable.class
+hello/service/PredictionService.class
