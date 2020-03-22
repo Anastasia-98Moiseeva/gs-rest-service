@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+  rbk:
+    image: "rbk-0.1.0"
+    ports:
+      - "8081:8081"
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.6
+
+  darksky:
+    image: "temperature-0.1.0"
+    ports:
+      - "8082:8082"
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.7
+
+  prediction:
+    image: "prediction-0.1.0"
+    ports:
+      - "8083:8083"
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16

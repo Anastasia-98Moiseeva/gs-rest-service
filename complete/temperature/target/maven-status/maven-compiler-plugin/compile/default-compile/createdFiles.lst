@@ -1,0 +1,6 @@
+ru/sber/temperature/DarkSkyService.class
+ru/sber/temperature/weather/WeatherTable.class
+ru/sber/temperature/weather/WeatherInstance.class
+ru/sber/temperature/weather/WeatherResponse.class
+ru/sber/temperature/weather/WeatherData.class
+ru/sber/temperature/DarkSkyController.class
