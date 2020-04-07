@@ -14,7 +14,7 @@ public class DollarRate {
     private final static DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd");
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private Double rate;
     private String date;

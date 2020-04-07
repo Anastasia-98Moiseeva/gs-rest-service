@@ -44,6 +44,7 @@ public class RBKService {
 
     public double getMaxMonthDollarRate() {
         Optional<Double> maxDollarRate = getDollarRateFromDB(Calendar.getInstance().getTime());
+        System.out.println(maxDollarRate);
         if (maxDollarRate.isPresent()) {
             return maxDollarRate.get();
         }
