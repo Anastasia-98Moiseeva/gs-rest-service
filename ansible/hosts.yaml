@@ -1,0 +1,12 @@
+all:
+  children:
+    rbk-and-prediction-server:
+      hosts: "176.119.156.76"
+      vars:
+        ansible_user: "mftiedu"
+        ansible_password: "cHONtic"
+    temperature-server:
+      hosts: "194.87.146.4"
+      vars:
+        ansible_user: "edumfti"
+        ansible_password: "aNSHaPi"

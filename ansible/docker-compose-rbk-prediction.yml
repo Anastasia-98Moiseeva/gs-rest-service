@@ -1,0 +1,23 @@
+version: '3'
+services:
+  rbk:
+    image: "rbk-0.1.0"
+    ports:
+      - "8081:8081"
+    depends_on:
+      - dbpostgresql
+
+  prediction:
+    image: "prediction-0.1.0"
+    ports:
+      - "8083:8083"
+
+  dbpostgresql:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pas

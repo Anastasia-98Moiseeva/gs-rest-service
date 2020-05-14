@@ -1,0 +1,32 @@
+- hosts: temperature-server
+  remote_user: edumfti
+  become: yes
+
+  vars:
+    ansible_become_user: root
+    ansible_become_password: aNSHaPi
+  
+  tasks:
+    - name: Delete last version of directoreis and create a new one for temperature service
+      shell: rm -rf ./edu/anastasia && mkdir -p edu/anastasia/temperature
+
+    - name: Copy temperature service
+      copy:
+        src: ../complete/temperature/temperature-0.1.0.jar
+        dest: edu/anastasia/temperature
+  
+    - name: Copy Dockerfile for temperature service
+      copy:
+        src: ../complete/temperature/Dockerfile
+        dest: edu/anastasia/temperature
+        
+    - name: Load image for temperature service
+      docker_image:
+        name: temperature-0.1.0
+        build:
+          path: ./edu/anastasia/temperature
+          pull: yes
+        source: build
+ 
+    - name: Run Dockerfile for temperature service
+      shell: sudo docker run -d temperature-0.1.0

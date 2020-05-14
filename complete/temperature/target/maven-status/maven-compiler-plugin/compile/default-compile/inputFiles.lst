@@ -1,6 +1,6 @@
-/home/anastasia/Documents/mipt/practicum-sber/my-with-my-pass/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/weather/WeatherInstance.java
-/home/anastasia/Documents/mipt/practicum-sber/my-with-my-pass/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/weather/WeatherData.java
-/home/anastasia/Documents/mipt/practicum-sber/my-with-my-pass/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/DarkSkyService.java
-/home/anastasia/Documents/mipt/practicum-sber/my-with-my-pass/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/weather/WeatherResponse.java
-/home/anastasia/Documents/mipt/practicum-sber/my-with-my-pass/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/DarkSkyController.java
-/home/anastasia/Documents/mipt/practicum-sber/my-with-my-pass/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/weather/WeatherTable.java
+/home/anastasia/Documents/mipt/practicum-sber/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/DarkSkyController.java
+/home/anastasia/Documents/mipt/practicum-sber/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/weather/WeatherTable.java
+/home/anastasia/Documents/mipt/practicum-sber/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/weather/WeatherResponse.java
+/home/anastasia/Documents/mipt/practicum-sber/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/DarkSkyService.java
+/home/anastasia/Documents/mipt/practicum-sber/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/weather/WeatherInstance.java
+/home/anastasia/Documents/mipt/practicum-sber/gs-rest-service/complete/temperature/src/main/java/ru/sber/temperature/weather/WeatherData.java

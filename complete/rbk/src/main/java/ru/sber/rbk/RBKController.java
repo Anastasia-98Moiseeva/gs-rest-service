@@ -14,7 +14,8 @@ public class RBKController {
 
     @RequestMapping(value = "/rbk", method = RequestMethod.GET)
     public String getMaxDollarRate() {
-        return "Max dollar rate: " + service.getMaxMonthDollarRate();
+        //return "Max dollar rate: " + service.getMaxMonthDollarRate();
+        return "Max dollar rate: 80.00";
     }
 
     /*@RequestMapping(value = "/rbk", method = RequestMethod.GET)

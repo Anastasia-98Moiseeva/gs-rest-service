@@ -1,0 +1,55 @@
+- hosts: rbk-and-prediction-server
+  remote_user: mftiedu
+  become: yes
+
+  vars:
+    ansible_become_user: root
+    ansible_become_password: cHONtic
+  
+  tasks:
+    - name: Delete last version of directoreis and create a new one for rbk and prediction services
+      shell: rm -rf ./edu/anastasia && mkdir -p edu/anastasia/rbk && mkdir -p edu/anastasia/prediction
+
+    - name: Copy rbk service
+      copy:
+        src: ../complete/rbk/rbk-0.1.0.jar
+        dest: edu/anastasia/rbk
+
+    - name: Copy prediction service
+      copy:
+        src: ../complete/prediction/prediction-0.1.0.jar
+        dest: edu/anastasia/prediction
+
+    - name: Copy Dockerfile for rbk service
+      copy:
+        src: ../complete/rbk/Dockerfile
+        dest: edu/anastasia/rbk
+
+    - name: Copy Dockerfile for prediction service
+      copy:
+        src: ../complete/prediction/Dockerfile
+        dest: edu/anastasia/prediction
+
+    - name: Load image for rbk service
+      docker_image:
+        name: rbk-0.1.0
+        build:
+          path: ./edu/anastasia/rbk
+          pull: yes
+        source: build
+
+    - name: Load image for prediction service
+      docker_image:
+        name: prediction-0.1.0
+        build:
+          path: ./edu/anastasia/prediction
+          pull: yes
+        source: build
+
+    - name: Copy docker-compose-rbk-prediction file
+      copy:
+        src: ./docker-compose-rbk-prediction.yml
+        dest: edu/anastasia/
+
+    - name: Run the docker-compose-rbk-prediction file
+      shell: sudo docker-compose -f ./edu/anastasia/docker-compose-rbk-prediction.yml up -d
