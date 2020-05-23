@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: temperature
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: temperature
+  template:
+    metadata:
+      name: temperature
+      labels:
+        app: temperature
+    spec:
+      containers:
+        - name: temperature
+          image: temperature-0.1.0
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: temperature
+spec:
+  ports:
+    - port: 8082
+      targetPort: 8082
+  selector:
+    app: temperature
+  type: LoadBalancer
